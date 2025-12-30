@@ -1,4 +1,5 @@
 from flask import Flask , jsonify , request
+from flask_cors import CORS
 from pydantic import BaseModel , Field
 from typing import Optional
 from datetime import datetime , timezone
@@ -11,12 +12,13 @@ class Priority(str , Enum):
 
 class TaskRequest(BaseModel):
     task_name: str
-    scale_difficulty: int # Scale from 1 to 5
+    scale_difficulty: int = Field(...,ge=1,le=5) # Scale from 1 to 5
     priority: Priority
     createdAt : datetime = Field(default_factory=lambda: datetime.now(timezone.utc))
     timedue: Optional[datetime] = None
 
 app = Flask(__name__)
+CORS(app)
 
 
 @app.route("/post_task", methods = ["POST"])
