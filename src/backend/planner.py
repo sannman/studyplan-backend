@@ -7,8 +7,8 @@ from datetime import datetime, timezone, timedelta
 from typing import Optional, List, Dict, Any
 from enum import Enum
 
-# Difficulty weight mapping (1-5 scale)
-difficulty_weight = {
+# Difficulty weight mapping (1-5 scale) - Constants
+DIFFICULTY_WEIGHT = {
     1: 1.0,   # Very Easy
     2: 1.5,   # Easy
     3: 2.0,   # Medium
@@ -16,8 +16,8 @@ difficulty_weight = {
     5: 3.0    # Very Hard
 }
 
-# Priority weight mapping
-priority_weight = {
+# Priority weight mapping - Constants
+PRIORITY_WEIGHT = {
     "Pending": 1.0,
     "Ongoing": 2.0,
     "Completed": 0.0  # Completed tasks don't need scheduling
@@ -84,8 +84,8 @@ def calculate_task_score(task: Dict[str, Any]) -> float:
             due_date = None
     
     # Calculate weights
-    diff_weight = difficulty_weight.get(difficulty, 1.0)
-    pri_weight = priority_weight.get(priority, 1.0)
+    diff_weight = DIFFICULTY_WEIGHT.get(difficulty, 1.0)
+    pri_weight = PRIORITY_WEIGHT.get(priority, 1.0)
     time_w = time_weight(due_date)
     
     # Combined score

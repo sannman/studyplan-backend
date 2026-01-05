@@ -68,12 +68,10 @@ def read_tasks() -> List[Dict[str, Any]]:
     """
     initialize_csv_files()
     
-    tasks = []
     try:
         with open(TASKS_FILE, mode="r", newline="", encoding="utf-8") as file:
             reader = csv.DictReader(file)
-            for row in reader:
-                tasks.append(row)
+            tasks = list(reader)
     except FileNotFoundError:
         return []
     

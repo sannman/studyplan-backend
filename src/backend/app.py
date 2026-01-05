@@ -20,8 +20,8 @@ from .data import (
     get_overdue_tasks
 )
 from .planner import (
-    difficulty_weight,
-    priority_weight,
+    DIFFICULTY_WEIGHT,
+    PRIORITY_WEIGHT,
     time_weight,
     calculate_task_score,
     generate_study_plan,
