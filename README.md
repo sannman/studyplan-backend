@@ -196,15 +196,14 @@ curl -X PUT http://localhost:5000/update_task_status \
 
 ## Data Storage
 
-The application uses CSV files for data persistence:
-- `db/tasks.csv`: Stores all tasks
-- `db/scores.csv`: Stores calculated priority scores
+The application now uses a lightweight local SQLite database for persistence:
+- `db/studyplan.db`: Stores task records and calculated priority scores
 
 ## Architecture
 
 - **app.py**: Flask REST API endpoints
 - **planner.py**: Core scheduling and prioritization algorithms
-- **data.py**: CSV-based data persistence layer
+- **data.py**: SQLite-based data persistence layer
 
 ## Technologies
 

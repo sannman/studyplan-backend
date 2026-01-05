@@ -9,5 +9,6 @@ wheels/
 # Virtual environments
 .venv
 
-# Database files (CSV storage)
+# Database files
 db/*.csv
+db/*.db
