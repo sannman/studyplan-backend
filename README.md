@@ -22,29 +22,34 @@ git clone https://github.com/sannman/studyplan-backend.git
 cd studyplan-backend
 ```
 
-2. Install dependencies:
+2. Install uv (if not already installed):
 ```bash
-pip install flask flask-cors pydantic python-dotenv
+curl -LsSf https://astral.sh/uv/install.sh | sh
+```
+
+3. Install dependencies:
+```bash
+uv sync
 ```
 
 ## Running the Application
 
 Start the Flask development server:
 ```bash
-python -m src.backend.app
+uv run python -m src.backend.app
 ```
 
 The server will start on `http://localhost:5000`
 
 **For development with debug mode enabled:**
 ```bash
-FLASK_DEBUG=true python -m src.backend.app
+FLASK_DEBUG=true uv run python -m src.backend.app
 ```
 
 **For production:** Use a production WSGI server like gunicorn or waitress:
 ```bash
-pip install gunicorn
-gunicorn -w 4 -b 0.0.0.0:5000 src.backend.app:app
+uv add gunicorn
+uv run gunicorn -w 4 -b 0.0.0.0:5000 src.backend.app:app
 ```
 
 ## API Endpoints
