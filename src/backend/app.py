@@ -319,4 +319,8 @@ def stats() -> dict:
 
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    # Debug mode should only be enabled for local development
+    # For production, use a WSGI server like gunicorn or waitress
+    import os
+    debug_mode = os.getenv("FLASK_DEBUG", "False").lower() == "true"
+    app.run(debug=debug_mode)
